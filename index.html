@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GVCN | Driving Exam Results</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <header>
+            <h1>Driving Exam Results</h1>
+            <p>GVCN · Wisconsin Department of Transportation</p>
+        </header>
+
+        <section class="card">
+            <h2>Exam Results Format</h2>
+
+            <textarea id="results"># Driving Exam Results
+
+**PASS**
+- (User) - **(Mistake points allocated)**
+-# Notes (Optional)
+- (User) - **(Mistake points allocated)**
+-# Notes (Optional)
+- (User) - **(Mistake points allocated)**
+-# Notes (Optional)
+
+---
+
+**FAIL**
+- (User) - **(Mistake points allocated / Instant Failure)**
+-# Notes (Optional)
+- (User) - **(Mistake points allocated / Instant Failure)**
+-# Notes (Optional)
+- (User) - **(Mistake points allocated / Instant Failure)**
+-# Notes (Optional)
+
+*Congratulations for everyone who participated. Do not worry, this will not affect your future attempts at the Driving School Sessions.*</textarea>
+
+            <button onclick="copyResults()">Copy Format</button>
+            <span id="message"></span>
+        </section>
+
+        <footer>
+            GVCN · DOT Transportation Division
+        </footer>
+
+    </main>
+
+    <script>
+        function copyResults() {
+            const results = document.getElementById("results");
+
+            navigator.clipboard.writeText(results.value)
+                .then(() => {
+                    document.getElementById("message").textContent =
+                        "Copied successfully!";
+                })
+                .catch(() => {
+                    results.select();
+                    document.execCommand("copy");
+                    document.getElementById("message").textContent =
+                        "Copied!";
+                });
+        }
+    </script>
+
+</body>
+</html>
